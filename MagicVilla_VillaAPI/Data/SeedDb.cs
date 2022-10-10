@@ -75,6 +75,31 @@ namespace MagicVilla_VillaAPI.Data
                 DateCreated = DateTime.Now
             });
 
+
+            applicationDbContext.VillaNumbers.Add(new VillaNumber()
+            {
+                VillaNo = 101,
+                VillaId = 1,
+                SpecialDetails = "This is the special one!",
+                CreatedDate = DateTime.Now,
+            });
+
+            applicationDbContext.VillaNumbers.Add(new VillaNumber()
+            {
+                VillaNo = 102,
+                VillaId = 1,
+                SpecialDetails = "This has sea view!",
+                CreatedDate = DateTime.Now,
+            });
+
+            applicationDbContext.VillaNumbers.Add(new VillaNumber()
+            {
+                VillaNo = 103,
+                VillaId = 1,
+                SpecialDetails = "This is the smallest one!",
+                CreatedDate = DateTime.Now,
+            });
+
             applicationDbContext.SaveChanges();
         }
     }
