@@ -1,0 +1,54 @@
+﻿@model MagicVilla_Web.Models.Dtos.VillaDTO
+
+@{
+    ViewData["Title"] = "DeleteVilla";
+}
+
+<h1>DeleteVilla</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>VillaDTO</h4>
+    <hr />
+    <form asp-action="DeleteVilla">
+        <input hidden asp-for="Id"/>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Details" class="control-label"></label>
+            <input asp-for="Details" class="form-control" />
+            <span asp-validation-for="Details" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Rate" class="control-label"></label>
+            <input asp-for="Rate" class="form-control" />
+            <span asp-validation-for="Rate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Sqft" class="control-label"></label>
+            <input asp-for="Sqft" class="form-control" />
+            <span asp-validation-for="Sqft" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Occupancy" class="control-label"></label>
+            <input asp-for="Occupancy" class="form-control" />
+            <span asp-validation-for="Occupancy" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="control-label"></label>
+            <input asp-for="ImageUrl" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Amenity" class="control-label"></label>
+            <input asp-for="Amenity" class="form-control" />
+            <span asp-validation-for="Amenity" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
