@@ -15,50 +15,55 @@ namespace MagicVilla_Web.Services
             villaUrl = configuration.GetValue<string>("ServicesUrls:VillaApi");
         }
 
-        public async Task<T> CreateAsync<T>(VillaCreateDTO villaCreateDTO)
+        public async Task<T> CreateAsync<T>(VillaCreateDTO villaCreateDTO, string token)
         {
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = MagicVilla_Utility.SD.ApiType.POST,
                 Url = villaUrl + "/api/villaApi",
-                Data = villaCreateDTO
+                Data = villaCreateDTO,
+                Token = token
             });
         }
 
-        public async Task<T> DeleteAsync<T>(int id)
+        public async Task<T> DeleteAsync<T>(int id, string token)
         {
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = MagicVilla_Utility.SD.ApiType.DELETE,
                 Url = villaUrl + "/api/villaApi/" + id,
+                Token = token
             });
         }
 
-        public async Task<T> GetAllAsync<T>()
+        public async Task<T> GetAllAsync<T>(string token)
         {
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = MagicVilla_Utility.SD.ApiType.GET,
                 Url = villaUrl + "/api/villaApi",
+                Token = token
             });
         }
 
-        public async Task<T> GetAsync<T>(int id)
+        public async Task<T> GetAsync<T>(int id, string token)
         {
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = MagicVilla_Utility.SD.ApiType.GET,
                 Url = villaUrl + "/api/villaApi/" + id,
+                Token = token
             });
         }
 
-        public async Task<T> UpdateAsync<T>(VillaUpdateDTO villaUpdateDTO)
+        public async Task<T> UpdateAsync<T>(VillaUpdateDTO villaUpdateDTO, string token)
         {
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = MagicVilla_Utility.SD.ApiType.PUT,
                 Url = villaUrl + "/api/villaApi/" + villaUpdateDTO.Id,
-                Data = villaUpdateDTO
+                Data = villaUpdateDTO,
+                Token = token
             });
         }
     }
