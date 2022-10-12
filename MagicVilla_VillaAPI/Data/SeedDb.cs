@@ -100,6 +100,15 @@ namespace MagicVilla_VillaAPI.Data
                 CreatedDate = DateTime.Now,
             });
 
+            applicationDbContext.LocalUsers.Add(new LocalUser()
+            {
+                Id = 1,
+                UserName="batman",
+                Name="Bruce Wayne",
+                Password="1234",
+                Role="Admin"
+            });
+
             applicationDbContext.SaveChanges();
         }
     }
