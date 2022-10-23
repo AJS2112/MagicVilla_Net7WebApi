@@ -5,10 +5,11 @@ using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace MagicVilla_VillaAPI.Controllers
+namespace MagicVilla_VillaAPI.Controllers.v1
 {
     [ApiController]
-    [Route("api/VillaNumber")]
+    [Route("api/v{version:apiVersion}/VillaNumber")]
+    [ApiVersion("1.0")]
     public class VillaNumberAPIController : Controller
     {
         private readonly IVillaNumberRepository _dbVillaNumber;
@@ -21,9 +22,15 @@ namespace MagicVilla_VillaAPI.Controllers
             _dbVillaNumber = dbVillaNumber;
             _dbVilla = dbVilla;
             _mapper = mapper;
-            this._response = new();
+            _response = new();
         }
-    
+
+        [HttpGet("GetString")]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "String1V1", "String2V1" };
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<ApiResponse>> GetVillaNumbers()
@@ -92,7 +99,7 @@ namespace MagicVilla_VillaAPI.Controllers
                     ModelState.AddModelError("MyCustomError", "Villa Number Alredy Exists!");
                     return BadRequest(ModelState);
                 }
-                if (await _dbVilla.GetAsync(v => v.Id== villaNumberCreateDTO.VillaId) == null)
+                if (await _dbVilla.GetAsync(v => v.Id == villaNumberCreateDTO.VillaId) == null)
                 {
                     ModelState.AddModelError("MyCustomError", "Villa Id is Invalid!");
 
